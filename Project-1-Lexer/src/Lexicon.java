@@ -6,29 +6,29 @@ public class Lexicon
 {
 
     private Map<Integer, String> map = new HashMap<Integer, String>();
-    
+
     public Lexicon()
     {
-        map.put(6, ",");      
-        map.put(7, ";");      
-        map.put(10, "prog");  
-        map.put(11, "main");  
-        map.put(12, "fcn");   
-        map.put(13, "class"); 
-        map.put(15, "float"); 
-        map.put(16, "int");   
+        map.put(6, ",");
+        map.put(7, ";");
+        map.put(10, "prog");
+        map.put(11, "main");
+        map.put(12, "fcn");
+        map.put(13, "class");
+        map.put(15, "float");
+        map.put(16, "int");
         map.put(17, "string");
-        map.put(18, "if");    
+        map.put(18, "if");
         map.put(19, "elseif");
-        map.put(20, "else");  
-        map.put(21, "while"); 
-        map.put(22, "input"); 
-        map.put(23, "print"); 
-        map.put(24, "new");   
+        map.put(20, "else");
+        map.put(21, "while");
+        map.put(22, "input");
+        map.put(23, "print");
+        map.put(24, "new");
         map.put(25, "return");
-        map.put(26, "var");   
-        map.put(31,"<");      
-        map.put(32, ">");     
+        map.put(26, "var");
+        map.put(31,"<");
+        map.put(32, ">");
         map.put(33, "{");
         map.put(34, "}");
         map.put(35, "[");
@@ -87,34 +87,55 @@ public class Lexicon
                 return 99;
             }
         }
-        return 99;   
+        return 99;
+    }
+
+    private static String printFormat(String codeLine, int lineNum){
+
+        String[] tokens = {}; //call Matt's parser, return array of Strings
+
+        for (int i = 0; i < token.length; i++)
+        {
+            int tval = getToken(tokens[i]);
+            switch(tval)
+            {
+                case 3: return "(Token= " + tval + " line= " + lineNum + " str= \"" + tokens[i]
+                            + "\" int= " + tokens[i] + ")";
+                        break;
+                case 4: return "(Token= " + tval + " line= " + lineNum + " str= \"" + tokens[i]
+                            + "\" float= " + tokens[i] + ")";
+                        break;
+                default:return "(Token= " + tval + " line= " + lineNum + " str= \"" + tokens[i] + "\")";
+                        break;
+            }
+        }
     }
 
     // Method used to check if string is an integer by doing try-catch
     private static boolean checkInt(String givenString)
     {
-        try 
-        { 
-            Integer.parseInt(givenString); 
+        try
+        {
+            Integer.parseInt(givenString);
             return true;
-        }  
-        catch (NumberFormatException e)  
-        { 
+        }
+        catch (NumberFormatException e)
+        {
             return false;
-        } 
+        }
     }
 
     // Method used to check if string is a float by doing try-catch
     private static boolean checkFloat(String giveString)
     {
-        try 
-        { 
-            Float.parseFloat(giveString); 
+        try
+        {
+            Float.parseFloat(giveString);
             return true;
-        }  
-        catch (NumberFormatException e)  
-        { 
+        }
+        catch (NumberFormatException e)
+        {
             return false;
-        } 
+        }
     }
 }
